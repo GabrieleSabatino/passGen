@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel = "icon" href = 
+    "./icon.jpg" 
+            type = "image/x-icon">
     <title>Password Generator</title>
     <script src="https://kit.fontawesome.com/3da1a747b2.js" crossorigin="anonymous"></script>
 </head>
@@ -19,18 +22,28 @@
 
         <div class="">
             <div class="settings">
-                <button class='nrml-btn' onClick='randomValues()'>Random values</button>
+                <button class='nrml-btn' onClick='randomValues()'>Random values (not encoded)</button>
                 <button class='nrml-btn' onClick='showW()'>Base64</button>
                 <button class='nrml-btn' onClick='showHex()'>Hex</button>
-                <button class='nrml-btn' onClick='binary()'>Binary</button>
+                <button class='nrml-btn' onClick='showBin()'>Binary</button>
             </div>
-
+            <p class='desc'>Encoded</p>
             <div class="result-div">
                 <span id='result'></span>
                 <button onClick='copy()' class=' btn-comp'>
                     <i class="far fa-clipboard fa-2x"></i>
                 </button>
             </div>
+            <p class='desc'>Not encoded</p>
+            <div class="result-ne-div">
+                <span id='result-ne'></span>
+                <button onClick='copyNE()' class=' btn-comp'>
+                    <i class="far fa-clipboard fa-2x"></i>
+                </button>
+            </div>
+            <button class='rel' onClick='clearData()'>
+                <i class="fas fa-redo-alt fa-2x"></i>
+            </button>
         </div>
 
     </div>

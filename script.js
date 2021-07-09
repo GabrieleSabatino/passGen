@@ -8,6 +8,7 @@
 //}
 
 const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"£$%&/()=?^*]}]-_.:,;';
+var nePSS = generateString(16);
 
 //get random values
 function generateString(length) {
@@ -19,6 +20,7 @@ function generateString(length) {
 
     return result
 
+
 }
 
 //encode in base64
@@ -28,14 +30,15 @@ function utf8_to_b64(str) {
 
 //show base64
 function showW() {
-    document.getElementById('result').innerHTML = utf8_to_b64(generateString(16))
+    document.getElementById('result').innerHTML = utf8_to_b64(nePSS);
+    document.getElementById('result-ne').innerHTML = nePSS;
 
 }
 
 //show random values
 function randomValues() {
-    document.getElementById('result').innerHTML = generateString(16)
-
+   document.getElementById('result-ne').innerHTML = nePSS
+   document.getElementById('result').innerHTML = ""
 }
 
 //hex encoder
@@ -49,20 +52,34 @@ function toHex(s) {
 }
 
 function showHex() {
-    document.getElementById('result').innerHTML = toHex(generateString(16))
+    document.getElementById('result').innerHTML = toHex(nePSS)
+    document.getElementById('result-ne').innerHTML = nePSS;
+ 
 }
 
 //binary
 function binary() {
-    const binary = Math.random().toString(2).substring(2);
+    var input = nePSS;
+    output = "";
+    for (var i = 0; i < input.length; i++) {
+        output += input[i].charCodeAt(0).toString(2) + " ";
+    }
 
-    document.getElementById('result').innerHTML = binary
+    return output
+
 }
 
-//copy
+
+function showBin() {
+    document.getElementById('result').innerHTML = binary(nePSS);
+    document.getElementById('result-ne').innerHTML = nePSS;
+}
+
+
+
+//copy encoded
 function copy() {
 
-    /* Get the text field */
     var copyText = document.getElementById("result");
     var textArea = document.createElement('textarea');
 
@@ -75,6 +92,31 @@ function copy() {
 
     alert('Copied in the clipboard')
 }
+
+//copy NE
+function copyNE() {
+
+    var copyText = document.getElementById("result-ne");
+    var textArea = document.createElement('textarea');
+
+    textArea.value = copyText.textContent;
+
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    textArea.remove();
+
+    alert('Copied in the clipboard')
+}
+
+//clear data
+function clearData() {
+    document.getElementById('result').innerHTML = "";
+    document.getElementById('result-ne').innerHTML = "";
+    location.reload()
+}
+
+
 
 
 
